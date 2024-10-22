@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <link rel="stylesheet" href="feedback.css">
+</head>
+<body>
+
+    <form id="feedbackForm" method="POST" action="submit_feedback.php">
+        <h2>Feedback Form</h2>
+
+        <!-- Name field -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name">
+
+        <!-- Email field -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email">
+
+        <!-- Feedback field -->
+        <label for="feedback">Feedback:</label>
+        <textarea id="feedback" name="feedback" placeholder="Enter your feedback" rows="4"></textarea>
+
+        <!-- Rating field -->
+        <label for="rating">Rating:</label>
+        <select id="rating" name="rating">
+            <option value="">Select a rating</option>
+            <option value="1">1 - Poor</option>
+            <option value="2">2 - Fair</option>
+            <option value="3">3 - Good</option>
+            <option value="4">4 - Very Good</option>
+            <option value="5">5 - Excellent</option>
+        </select>
+
+        <!-- Submit button -->
+        <input type="submit" value="Submit">
+
+        
+    </form>
+
+    <button onclick="window.location.href='view_feedback.php';" class="feedbackForm">View Feedback</button>
+
+    <script>
+        // JavaScript for form validation
+        document.getElementById("feedbackForm").addEventListener("submit", function(event) {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var feedback = document.getElementById("feedback").value;
+            var rating = document.getElementById("rating").value;
+
+            // Validate name
+            if (name === "") {
+                alert("Please enter your name.");
+                event.preventDefault();
+                return false;
+            }
+
+            // Validate email
+            if (email === "") {
+                alert("Please enter your email.");
+                event.preventDefault();
+                return false;
+            }
+
+            // Validate feedback
+            if (feedback === "") {
+                alert("Please provide your feedback.");
+                event.preventDefault();
+                return false;
+            }
+
+            // Validate rating
+            if (rating === "") {
+                alert("Please select a rating.");
+                event.preventDefault();
+                return false;
+            }
+        });
+    </script>
+
+</body>
+</html>
